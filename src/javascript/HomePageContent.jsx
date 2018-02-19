@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { MEDIA_URL } from '../config';
 
 class HomePageContent extends Component {
   componentDidMount() {
-    fetch('https://martina-wordpress-headless.herokuapp.com/wp-json/wp/v2/media').then(function(response) {
+    fetch(MEDIA_URL).then(function(response) {
       return response.json();
     }).then(function(response) {
       console.log(response);
