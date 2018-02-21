@@ -10,6 +10,10 @@
   background-color: white;
 }
 
+.main-nav-bar .container {
+  margin-left: 20px;
+}
+
 .home-page-content {
   margin-left: 235px;
   height: 100%;
