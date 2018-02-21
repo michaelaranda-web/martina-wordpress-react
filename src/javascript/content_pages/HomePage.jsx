@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { MEDIA_URL } from '../config';
+import { Route } from "react-router-dom";
+import { MEDIA_URL } from '../../config';
 
-class HomePageContent extends Component {
+class HomePage extends Component {
   constructor() {
     super();
     this.state = {
@@ -24,7 +25,7 @@ class HomePageContent extends Component {
   
   render() {
     return (
-      <div className="home-page-content">
+      <div className="home-page">
         {
           this.state.mediaItemLinks.map(function(mediaItemLink, i) {
             return (
@@ -37,4 +38,4 @@ class HomePageContent extends Component {
   }
 }
 
-export default HomePageContent;
+export default HomePage;
