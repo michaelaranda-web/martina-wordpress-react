@@ -4,19 +4,20 @@
 }
 
 .main-nav-bar {
-  float: left;
-  height: 100%;
-  width: 235px;
+  position: fixed;
+  min-width: 235px;
   background-color: white;
+  height: 100vh;
+  margin-right: 10px;
+  box-shadow: 5px 10px 5px #b9b9b9;
 }
 
 .main-nav-bar .container {
   margin-left: 20px;
 }
 
-.home-page {
-  margin-left: 235px;
-  height: 100%;
+.main-content {
+  margin-left: 245px;
   background-color: white;
 }
 

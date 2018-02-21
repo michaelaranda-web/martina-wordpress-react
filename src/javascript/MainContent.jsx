@@ -10,7 +10,7 @@ import { MEDIA_URL } from '../config';
 class MainContent extends Component {
   render() {
     return (
-      <div>
+      <div className="main-content">
         <Route exact path="/" component={HomePage}/>
         <Route path="/storyboard" component={StoryboardPage}/>
         <Route path="/life_drawings" component={LifeDrawingsPage}/>
