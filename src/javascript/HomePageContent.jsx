@@ -26,9 +26,9 @@ class HomePageContent extends Component {
     return (
       <div className="home-page-content">
         {
-          this.state.mediaItemLinks.map(function(mediaItemLink) {
+          this.state.mediaItemLinks.map(function(mediaItemLink, i) {
             return (
-              <img src={mediaItemLink} />
+              <img key={i} src={mediaItemLink} alt={`image-${i}`}/>
             );
           })
         }
