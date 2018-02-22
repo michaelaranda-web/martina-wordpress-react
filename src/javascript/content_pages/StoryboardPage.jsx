@@ -47,12 +47,11 @@ class SliderDisplay extends Component {
     });
     
     $('.slider-nav').slick({
-      slidesToShow: 5,
+      slidesToShow: 3,
       slidesToScroll: 1,
       asNavFor: '.slider-for',
-      infinite: true,
       dots: true,
-      arrows: false,
+      arrows: true,
       focusOnSelect: true,
       variableWidth: true
     });
@@ -78,7 +77,9 @@ class StoryboardPage extends Component {
     return (
       <div className="storyboard-page">
         <SliderDisplay />
-        <SliderItems sectionClassName="slider-nav" />
+        <div className="slider-nav-container">
+          <SliderItems sectionClassName="slider-nav" />
+        </div>
       </div>
     );
   }

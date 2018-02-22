@@ -1,6 +1,7 @@
 .App {
   height: 100vh;
   background-color: white;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .main-nav-bar {
@@ -14,6 +15,20 @@
 
 .main-nav-bar .container {
   margin-left: 20px;
+}
+
+.main-nav-bar .nav-bar-link {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.main-nav-bar .contact-info {
+  margin: 40px 0;
+  font-size: 12px;
+}
+
+.main-nav-bar .contact-info p {
+  margin: 5px 0;
 }
 
 .main-content {
@@ -38,8 +53,18 @@
   height: 350px;
 }
 
+.storyboard-page .slider-nav-container {
+  display: flex;
+  justify-content: center;
+}
+
 .storyboard-page .slider-nav {
+  max-width: 700px;
   margin-top: 30px;
+}
+
+.storyboard-page .slider-nav .slick-arrow {
+  background-color: lightgrey;
 }
 
 .storyboard-page .slider-nav .slick-track {
