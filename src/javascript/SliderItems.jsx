@@ -5,9 +5,9 @@ class SliderItems extends Component {
     return (
       <div className={this.props.className}>
         {
-          this.props.itemLinks.map((itemLink) => {
+          this.props.itemLinks.map((itemLink, i) => {
             return (
-              <div className="item">
+              <div key={i} className="item">
                 <img src={itemLink} alt="martina-artwork" draggable="false"/>
               </div>
             );

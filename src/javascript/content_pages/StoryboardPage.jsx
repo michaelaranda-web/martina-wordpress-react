@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 import Slick from 'slick-carousel';
 import SliderItems from '../SliderItems';
 import SliderDisplay from '../SliderDisplay';
@@ -16,14 +17,16 @@ class StoryboardPage extends Component {
   componentDidMount() {
     var self = this;
     
-    fetch(MEDIA_URL).then(function(response) {
-      return response.json();
-    }).then(function(response) {
-      let fetchedMediaItemLinks = response.map(function(mediaItem) {
-        return mediaItem.source_url;
+    axios.get(MEDIA_URL)
+      .then(function(response) {
+        return response.data;
       })
-      self.setState({mediaItemLinks: fetchedMediaItemLinks}, self.activateSlick);
-    });
+      .then(function(response) {
+        let fetchedMediaItemLinks = response.map(function(mediaItem) {
+          return mediaItem.source_url;
+        })
+        self.setState({mediaItemLinks: fetchedMediaItemLinks}, self.activateSlick);
+      });
   }
   
   componentWillUnmount() {
