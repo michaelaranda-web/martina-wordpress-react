@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route } from "react-router-dom";
 import { MEDIA_URL } from '../../config';
 
 class HomePage extends Component {
@@ -29,7 +28,7 @@ class HomePage extends Component {
         {
           this.state.mediaItemLinks.map(function(mediaItemLink, i) {
             return (
-              <img key={i} src={mediaItemLink} alt={`image-${i}`}/>
+              <img key={i} src={mediaItemLink} alt={`home-page-image-${i}`}/>
             );
           })
         }

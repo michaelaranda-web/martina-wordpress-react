@@ -5,7 +5,6 @@ import StoryboardPage from "./content_pages/StoryboardPage";
 import LifeDrawingsPage from "./content_pages/LifeDrawingsPage";
 import GraphicsAndAnimationPage from "./content_pages/GraphicsAndAnimationPage";
 import ComicsPage from "./content_pages/ComicsPage";
-import { MEDIA_URL } from '../config';
 
 class MainContent extends Component {
   render() {
