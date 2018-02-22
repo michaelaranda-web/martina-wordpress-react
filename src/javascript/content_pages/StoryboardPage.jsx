@@ -1,43 +1,50 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import Slick from 'slick-carousel';
+import SliderItems from '../SliderItems';
+import SliderDisplay from '../SliderDisplay';
+import { MEDIA_URL } from '../../config';
 
-const SliderItems = ({sectionClassName}) => {
-  return (
-    <div className={sectionClassName}>
-      <div className="item">
-    		<img src="http://www.planwallpaper.com/static/images/kartandtinki1_photo-wallpapers_02.jpg" alt="image"  draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.intrawallpaper.com/static/images/awesome-rain-wallpaper_0_PB7IVa9.jpg" alt="image" draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.planwallpaper.com/static/images/kartandtinki1_photo-wallpapers_02.jpg" alt="image"  draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.intrawallpaper.com/static/images/awesome-rain-wallpaper_0_PB7IVa9.jpg" alt="image" draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.planwallpaper.com/static/images/kartandtinki1_photo-wallpapers_02.jpg" alt="image"  draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.intrawallpaper.com/static/images/awesome-rain-wallpaper_0_PB7IVa9.jpg" alt="image" draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.planwallpaper.com/static/images/kartandtinki1_photo-wallpapers_02.jpg" alt="image"  draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.intrawallpaper.com/static/images/awesome-rain-wallpaper_0_PB7IVa9.jpg" alt="image" draggable="false"/>
-    	</div>
-    	<div className="item">
-    		<img src="http://www.planwallpaper.com/static/images/kartandtinki1_photo-wallpapers_02.jpg" alt="image"  draggable="false"/>
-    	</div>
-    </div>  
-  );
-}
-
-class SliderDisplay extends Component {
+class StoryboardPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      mediaItemLinks: []
+    };
+  }
+  
   componentDidMount() {
+    var self = this;
+    
+    fetch(MEDIA_URL).then(function(response) {
+      return response.json();
+    }).then(function(response) {
+      let fetchedMediaItemLinks = response.map(function(mediaItem) {
+        return mediaItem.source_url;
+      })
+      self.setState({mediaItemLinks: fetchedMediaItemLinks}, self.activateSlick);
+    });
+  }
+  
+  componentWillUnmount() {
+    $('.slider-for').slick('unslick');
+    $('.slider-nav').slick('unslick');
+  }
+  
+  render() {
+    return (
+      <div className="storyboard-page">
+        <SliderDisplay itemLinks={this.state.mediaItemLinks}/>
+        <div className="slider-nav-container">
+          <SliderItems 
+            className="slider-nav"
+            itemLinks={this.state.mediaItemLinks}/>
+        </div>
+      </div>
+    );
+  }
+  
+  activateSlick() {
     $('.slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -53,35 +60,10 @@ class SliderDisplay extends Component {
       dots: true,
       arrows: true,
       focusOnSelect: true,
-      variableWidth: true
+      variableWidth: true,
+      infinite: false,
+      centerMode: true
     });
-  }
-  
-  componentWillUnmount() {
-    $('.slider-for').slick('unslick');
-    $('.slider-nav').slick('unslick');
-  }
-  
-  render() {
-    return (
-      <div className="slider-display-section">
-        <SliderItems sectionClassName="slider-for" />
-      </div>
-    );
-  }
-}
-
-
-class StoryboardPage extends Component {
-  render() {
-    return (
-      <div className="storyboard-page">
-        <SliderDisplay />
-        <div className="slider-nav-container">
-          <SliderItems sectionClassName="slider-nav" />
-        </div>
-      </div>
-    );
   }
 }
 
