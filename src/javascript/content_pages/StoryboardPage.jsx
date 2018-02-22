@@ -54,14 +54,13 @@ class StoryboardPage extends Component {
     });
     
     $('.slider-nav').slick({
-      slidesToShow: 3,
       slidesToScroll: 1,
       asNavFor: '.slider-for',
       dots: true,
       arrows: true,
       focusOnSelect: true,
       variableWidth: true,
-      infinite: false,
+      infinite: true,
       centerMode: true
     });
   }
