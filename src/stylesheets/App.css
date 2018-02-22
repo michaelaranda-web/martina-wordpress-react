@@ -17,7 +17,36 @@
 }
 
 .main-content {
+  height: 100vh;
   margin-left: 245px;
-  background-color: white;
 }
 
+.slider-display-section {
+  padding: 30px;
+}
+
+.slider-display-section .slider-for .slick-slide .item {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.slider-display-section .slider-for .slick-arrow {
+  background-color: lightgrey;
+}
+
+.slider-display-section .slider-for .slick-slide img {
+  height: 350px;
+}
+
+.storyboard-page .slider-nav {
+  margin-top: 30px;
+}
+
+.storyboard-page .slider-nav .slick-track {
+  height: 100px;
+}
+
+.storyboard-page .slider-nav .slick-track img {
+  height: 100px;
+  margin: 0 5px;
+}
