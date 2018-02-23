@@ -87,3 +87,38 @@
   height: 100px;
   margin: 0 5px;
 }
+
+.comics-page .comic-reader {
+  position: relative;
+  min-height: 300px;
+  text-align: center;
+  padding: 20px 0 40px;
+}
+
+.comics-page .comic-reader .comic-reader-nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 25px;
+  top: 30px;
+}
+
+.comics-page .comic-reader .current-comic-page img {
+  max-height: 800px;
+  max-width: 700px;
+}
+
+.comics-page .comic-reader .comic-reader-nav .nav-button {
+  background-color: black;
+  border: none;
+  color: white;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+  margin: 3px 0;
+  cursor: pointer;
+}
+
+.comics-page .comic-reader .comic-reader-nav .nav-button .selected {
+  background-color: #8dc0d4;  
+}
