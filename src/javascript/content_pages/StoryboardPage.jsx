@@ -10,6 +10,7 @@ class StoryboardPage extends Component {
   constructor() {
     super();
     this.state = {
+      loading: false,
       mediaItemLinks: []
     };
   }
@@ -17,7 +18,8 @@ class StoryboardPage extends Component {
   componentDidMount() {
     var self = this;
     
-    axios.get(MEDIA_URL)
+    this.setState({loading: true}, () => {
+      axios.get(MEDIA_URL)
       .then(function(response) {
         return response.data;
       })
@@ -25,8 +27,9 @@ class StoryboardPage extends Component {
         let fetchedMediaItemLinks = response.map(function(mediaItem) {
           return mediaItem.source_url;
         })
-        self.setState({mediaItemLinks: fetchedMediaItemLinks}, self.activateSlick);
+        self.setState({loading: false, mediaItemLinks: fetchedMediaItemLinks}, self.activateSlick);
       });
+    });
   }
   
   componentWillUnmount() {
@@ -34,17 +37,30 @@ class StoryboardPage extends Component {
     $('.slider-nav').slick('unslick');
   }
   
+  renderStoryboardPage() {
+    if (this.state.loading) {
+      return <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif" id="spinner-icon" />
+    }
+    else {
+      return (
+        <div>
+          <SliderDisplay itemLinks={this.state.mediaItemLinks}/>
+          <div className="slider-nav-container">
+            <SliderItems 
+              className="slider-nav"
+              itemLinks={this.state.mediaItemLinks}/>
+          </div>
+        </div>
+      )
+    }
+  }
+  
   render() {
     return (
       <div className="storyboard-page">
-        <SliderDisplay itemLinks={this.state.mediaItemLinks}/>
-        <div className="slider-nav-container">
-          <SliderItems 
-            className="slider-nav"
-            itemLinks={this.state.mediaItemLinks}/>
-        </div>
+        {this.renderStoryboardPage()}
       </div>
-    );
+    ); 
   }
   
   activateSlick() {
