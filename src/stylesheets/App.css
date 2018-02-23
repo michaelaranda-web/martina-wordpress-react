@@ -108,6 +108,10 @@
   max-width: 700px;
 }
 
+.comics-page .comic-reader .current-comic-page img.hidden {
+  display: none;
+}
+
 .comics-page .comic-reader .comic-reader-nav .nav-button {
   background-color: black;
   border: none;

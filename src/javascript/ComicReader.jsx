@@ -1,31 +1,11 @@
 import React, { Component } from 'react';
-
-class ComicReaderNavButton extends Component {
-  handleClick() {
-    this.props.onClick(this.props.value);
-  }
-  
-  render() {
-    return (
-      <button 
-        className="nav-button"
-        onClick={this.handleClick.bind(this)} >
-          {this.props.text}
-      </button>
-    );
-  }
-}
+import ComicReaderNavButton from './ComicReaderNavButton';
 
 class ComicReader extends Component {
   constructor() {
     super();
     this.state = {
-      currentComicPage: 0,
-      comicPages: [
-        <img src="https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-1-MLo-1.jpg" />,
-        <img src="https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-2-MLo-1.jpg" />,
-        <img src="https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-3-MLo-1.jpg" />
-      ]
+      currentComicPage: 0
     };
   }
   
@@ -33,8 +13,14 @@ class ComicReader extends Component {
    this.setState({currentComicPage: value}); 
   }
   
+  renderComicPages() {
+    return this.props.comicPageLinks.map((comicPageLink, i) => {
+      return <img src={comicPageLink} key={i} className={this._getComicPageClass(i)}/>
+    });
+  }
+  
   renderNavButtons() {
-    return this.props.comicPages.map((page, i) => {
+    return this.props.comicPageLinks.map((page, i) => {
       return <ComicReaderNavButton 
                 onClick={this.updateCurrentComicPage.bind(this)}
                 key={i}
@@ -47,13 +33,21 @@ class ComicReader extends Component {
     return (
       <div className="comic-reader">
         <div className="current-comic-page">
-         {this.state.comicPages[this.state.currentComicPage]}
+         {this.renderComicPages()}
         </div>
         <div className="comic-reader-nav">
           {this.renderNavButtons()}
         </div>
       </div>
     );
+  }
+  
+  _isCurrentComicPage(value) {
+    return value === this.state.currentComicPage;
+  }
+  
+  _getComicPageClass(value) {
+    return this._isCurrentComicPage(value) ? 'visible' : 'hidden';
   }
 }
 
