@@ -23,13 +23,17 @@ class ComicReader extends Component {
     return this.props.comicPageLinks.map((page, i) => {
       return <ComicReaderNavButton 
                 onClick={this.updateCurrentComicPage.bind(this)}
-                key={i+1}
-                value={i+1}
+                key={i}
+                value={i}
                 text={i+1} />
     })
   }
   
   render() {
+    if (this.props.comicPageLinks.length === 0) {
+      return <div></div>
+    }
+    
     return (
       <div className="comic-reader">
         <div className="current-comic-page">
