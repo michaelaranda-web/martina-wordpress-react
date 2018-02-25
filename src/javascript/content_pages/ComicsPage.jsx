@@ -25,14 +25,18 @@ class ComicsPage extends Component {
     });
   }
   
+  renderComicReaders() {
+    return this.state.comicItemLinks.map((links, i) => {
+      return <ComicReader key={i} comicPageLinks={links} />
+    }) 
+  }
+  
   render() {
     if (this.state.comicItemLinks.length === 0) { return <div></div> }
     
     return (
       <div className="comics-page">
-        <ComicReader comicPageLinks={this.state.comicItemLinks[0]} />
-        <ComicReader comicPageLinks={["https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-1-MLo-1.jpg", "https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-2-MLo-1.jpg", "https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-3-MLo-1.jpg"]} />
-        <ComicReader comicPageLinks={["https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-1-MLo-1.jpg", "https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-2-MLo-1.jpg", "https://martina-wordpress-headless.s3.amazonaws.com/uploads/2018/02/Hourly-Comic-3-MLo-1.jpg"]} />
+        {this.renderComicReaders()}
       </div>
     );
   }

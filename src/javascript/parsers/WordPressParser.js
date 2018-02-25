@@ -1,14 +1,19 @@
-import { JSDOM } from 'jsdom';
+import cheerio from 'cheerio';
 
 export function getImageLinksForPosts(wpResponse) {
-  var imageLinksForPosts = wpResponse.data.map((wpPostData) => {
+  var imageLinksForPosts = wpResponse.data.map((wpPostData, i) => {
     var postImageLinks = [];
-    var wpPostDOM = new JSDOM(wpPostData.content.rendered);
-    wpPostDOM.window.document.querySelectorAll('.gallery-item img').forEach((imageTag) => {
-      postImageLinks.push(imageTag.src);
-    });
+    const $ = cheerio.load(wpPostData.content.rendered);
     
-    return postImageLinks.reverse();
+    var imageTags = $('.gallery-item img');
+    
+    if (imageTags.length > 0) {
+      imageTags.map((i, image) => {
+        postImageLinks.push(image.attribs.src);
+      });
+    } 
+    
+    return postImageLinks;
   });
   
   return imageLinksForPosts;
