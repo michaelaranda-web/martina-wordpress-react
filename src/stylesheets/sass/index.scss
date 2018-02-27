@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  height: 100vh;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#spinner-icon {
+  position: absolute;
+  z-index: 999;
+  width: 40px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.main-nav-bar {
+  position: fixed;
+  min-width: 235px;
+  background-color: white;
+  height: 100vh;
+  margin-right: 10px;
+  box-shadow: 5px 10px 5px #b9b9b9;
+  
+  .container {
+    margin-left: 20px;
+  }
+  
+  .nav-bar-link {
+    margin: 5px 0;
+    font-size: 15px;
+  }
+  
+  .contact-info {
+    margin: 40px 0;
+    font-size: 12px;
+    
+    p {
+      margin: 5px 0;
+    }
+  }
+}
+
+.main-content {
+  height: 100vh;
+  margin-left: 245px;
+  position: relative;
+}
+
+.slider-display-section {
+  padding: 30px;
+  
+  .slider-for {
+    .slick-slide {
+      .item {
+        display: flex !important;
+        justify-content: center !important;
+      }
+      
+      img {
+        height: 350px;
+      }
+    }
+    
+    .slick-arrow {
+      background-color: lightgrey;
+    }
+  }
+}
+
+.storyboard-page {
+  .slider-nav-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .slider-nav {
+    max-width: 700px;
+    margin-top: 30px;
+    
+    .slick-arrow {
+      background-color: lightgrey;
+    }
+    
+    .slick-track {
+      height: 100px;
+      
+      img {
+        height: 100px;
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+.comics-page {
+  .comic-reader {
+    position: relative;
+    min-height: 300px;
+    text-align: center;
+    padding: 20px 0 40px;
+    
+    .comic-reader-nav {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 25px;
+      top: 30px;
+      
+      .nav-button {
+        background-color: black;
+        border: none;
+        color: white;
+        font-weight: bold;
+        height: 25px;
+        width: 25px;
+        margin: 3px 0;
+        cursor: pointer;
+        
+        .selected {
+          background-color: #8dc0d4;  
+        }
+      }
+    }
+    
+    .current-comic-page img {
+      max-height: 800px;
+      max-width: 700px;
+      
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}

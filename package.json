@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "jquery": "^3.3.1",
+    "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
@@ -14,9 +15,10 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run sass && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sass": "./node_modules/node-sass/bin/node-sass ./src/stylesheets/sass/index.scss ./src/stylesheets/css/index.css"
   }
 }
