@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getImageLinksForPosts } from '../parsers/WordPressParser';
+import FetchSpinner from '../FetchSpinner';
 import ComicReader from '../ComicReader';
 import axios from 'axios';
 import { COMICS_URL } from '../../config';
@@ -8,21 +9,13 @@ class ComicsPage extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
       comicItemLinks: []
     };
   }
   
-  componentDidMount() {
-    var self = this;
-    
-    this.setState({loading: true}, () => {
-      axios.get(COMICS_URL)
-      .then(function(response) {
-        var allPostImageLinks = getImageLinksForPosts(response);
-        self.setState({loading: false, comicItemLinks: allPostImageLinks});
-      })
-    });
+  setComicItemLinks(response) {
+    var allPostImageLinks = getImageLinksForPosts(response);
+    this.setState({comicItemLinks: allPostImageLinks});
   }
   
   renderComicReaders() {
@@ -32,12 +25,12 @@ class ComicsPage extends Component {
   }
   
   render() {
-    if (this.state.comicItemLinks.length === 0) { return <div></div> }
-    
     return (
-      <div className="comics-page">
-        {this.renderComicReaders()}
-      </div>
+      <FetchSpinner requestUrl={COMICS_URL} onFetchSuccess={this.setComicItemLinks.bind(this)}>
+        <div className="comics-page">
+          {this.renderComicReaders()}
+        </div>
+      </FetchSpinner>
     );
   }
 }
