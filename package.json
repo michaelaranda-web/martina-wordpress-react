@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "npm run sass && react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run sass && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "sass": "./node_modules/node-sass/bin/node-sass ./src/stylesheets/sass/index.scss ./src/stylesheets/css/index.css"
