@@ -15,8 +15,7 @@ class FetchSpinner extends Component {
     this.setState({loading: true}, () => {
       axios.get(this.props.requestUrl)
       .then(function(response) {
-        self.setState({loading: false});
-        self.props.onFetchSuccess(response);
+        self.setState({loading: false}, () => { self.props.onFetchSuccess(response) }); 
       })
     });
   }
