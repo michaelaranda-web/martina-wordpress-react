@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import axios from 'axios';
+import FetchSpinner from '../FetchSpinner';
 import Slick from 'slick-carousel';
 import SliderItems from '../SliderItems';
 import SliderDisplay from '../SliderDisplay';
@@ -10,55 +10,33 @@ class StoryboardPage extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
       mediaItemLinks: []
     };
   }
   
-  componentDidMount() {
-    var self = this;
-    
-    this.setState({loading: true}, () => {
-      axios.get(MEDIA_URL)
-      .then(function(response) {
-        return response.data;
-      })
-      .then(function(response) {
-        let fetchedMediaItemLinks = response.map(function(mediaItem) {
-          return mediaItem.source_url;
-        })
-        self.setState({loading: false, mediaItemLinks: fetchedMediaItemLinks}, self.activateSlick);
-      });
-    });
-  }
-  
   componentWillUnmount() {
-    $('.slider-for').slick('unslick');
-    $('.slider-nav').slick('unslick');
+    this.deactivateSlick();
   }
   
-  renderStoryboardPage() {
-    if (this.state.loading) {
-      return <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif" id="spinner-icon" />
-    }
-    else {
-      return (
-        <div>
+  setMediaItemLinks(response) {
+    let fetchedMediaItemLinks = response.data.map(function(mediaItem) {
+      return mediaItem.source_url;
+    })
+    
+    this.setState({mediaItemLinks: fetchedMediaItemLinks}, this.activateSlick);
+  }
+  
+  render() {
+    return (
+      <div className="storyboard-page">
+        <FetchSpinner requestUrl={MEDIA_URL} onFetchSuccess={this.setMediaItemLinks.bind(this)} >
           <SliderDisplay itemLinks={this.state.mediaItemLinks}/>
           <div className="slider-nav-container">
             <SliderItems 
               className="slider-nav"
               itemLinks={this.state.mediaItemLinks}/>
           </div>
-        </div>
-      )
-    }
-  }
-  
-  render() {
-    return (
-      <div className="storyboard-page">
-        {this.renderStoryboardPage()}
+        </FetchSpinner>
       </div>
     ); 
   }
@@ -82,6 +60,11 @@ class StoryboardPage extends Component {
       infinite: true,
       centerMode: true
     });
+  }
+  
+  deactivateSlick() {
+    $('.slider-for').slick('unslick');
+    $('.slider-nav').slick('unslick');
   }
 }
 
