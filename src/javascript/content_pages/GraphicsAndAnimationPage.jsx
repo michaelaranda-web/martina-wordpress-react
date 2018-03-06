@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import AnimationGallery from '../AnimationGallery';
 
 class GraphicsAndAnimationPage extends Component {
   render() {
     return (
       <div className="graphics-and-animation-page">
-        Graphics and Animation Page
+        <AnimationGallery />
+        <div className="gallery-divider"></div>
+        <AnimationGallery />
       </div>
     );
   }

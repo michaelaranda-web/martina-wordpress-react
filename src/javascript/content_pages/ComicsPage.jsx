@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getImageLinksForPosts } from '../parsers/WordPressParser';
 import FetchSpinner from '../FetchSpinner';
 import ComicReader from '../ComicReader';
-import axios from 'axios';
 import { COMICS_URL } from '../../config';
 
 class ComicsPage extends Component {
