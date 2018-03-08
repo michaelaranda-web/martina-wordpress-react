@@ -8,12 +8,15 @@ class AnimationGallery extends Component {
     for (var k in galleryDetailObject){
       if (galleryDetailObject.hasOwnProperty(k) && k !== "Description") {
         galleryDetails.push(
-          <div className="detail" key={new Date().getUTCMilliseconds()}>
+          <div className="detail" key={k}>
             <span className="label">{`${k}:`}</span><span>{galleryDetailObject[k]}</span>
           </div>
         );
       }
     }
+    
+    console.log("1", galleryDetailObject);
+    console.log("2", galleryDetails);
     
     return galleryDetails;
   }
