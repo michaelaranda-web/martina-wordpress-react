@@ -15,9 +15,6 @@ class AnimationGallery extends Component {
       }
     }
     
-    console.log("1", galleryDetailObject);
-    console.log("2", galleryDetails);
-    
     return galleryDetails;
   }
   
