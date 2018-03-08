@@ -9,7 +9,7 @@ export function getImageLinksForPosts(wpResponse) {
     
     if (imageTags.length > 0) {
       imageTags.map((i, image) => {
-        postImageLinks.push(image.attr('src'));
+        postImageLinks.push($(image).attr('src'));
       });
     } 
     
@@ -39,8 +39,6 @@ export function getAnimationInfoForPosts(wpResponse) {
     var textContent = $('p').text().trim();
     var keyValuePairs = parseKeyValuePairs(textContent);
     
-    debugger;
-    
     return {
       title: wpPostData.title.rendered,
       featuredMediaLinks: featuredMediaLinks,
@@ -53,7 +51,7 @@ export function getAnimationInfoForPosts(wpResponse) {
 }
 
 function parseKeyValuePairs(content) {
-  var keyValueRegex = /([A-Za-z_]*):(.*?)\n/g;
+  var keyValueRegex = /([0-9A-Za-z_]*):(.*?)(?:$|\n)/g;
   var keyValuePairs = {};
   var match;
   
