@@ -171,11 +171,12 @@ body {
   .animation-gallery {
     display: flex;
     flex-wrap: wrap;
-    width: 840px;
+    justify-content: space-between;
+    max-width: 1000px;
     padding: 25px;
     
     .details-section {
-      width: 300px;
+      padding-bottom: 25px;
       
       .title {
         margin: 0;
@@ -196,8 +197,6 @@ body {
     }
     
     .video-section {
-      margin-left: 40px;
-      
       .video-container {
         margin-bottom: 20px;
         
