@@ -54,6 +54,29 @@ body {
   position: relative;
 }
 
+.home-page {
+  display: flex;
+  
+  .column-one, .column-two {
+    display: inline-block;
+    width: 50%;
+    
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+  }
+  
+  .col-one-item, .col-two-item {
+    img {
+      width: 100%;
+      padding-bottom: 20px;
+    }
+  } 
+}
+
 .slider-display-section {
   padding: 30px;
   
