@@ -19,8 +19,6 @@ class StoryboardPage extends Component {
     var allPostImageLinks = getImageLinksForPosts(response);
     var flattenedMediaItemLinks = [].concat.apply([], allPostImageLinks);
     
-    console.log("flattenedMediaItemLinks: ", flattenedMediaItemLinks)
-    
     this.setState({mediaItemLinks: flattenedMediaItemLinks}, this.activateSlick);
   }
   

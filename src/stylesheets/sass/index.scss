@@ -115,7 +115,7 @@ body {
       top: 30px;
       
       .nav-button {
-        background-color: black;
+        background-color: #8a8888;
         border: none;
         color: white;
         font-weight: bold;
@@ -124,7 +124,11 @@ body {
         margin: 3px 0;
         cursor: pointer;
         
-        .selected {
+        &:hover {
+          background-color: #8e979a;
+        }
+        
+        &.selected {
           background-color: #8dc0d4;  
         }
       }

@@ -22,6 +22,7 @@ class ComicReader extends Component {
   renderNavButtons() {
     return this.props.comicPageLinks.map((page, i) => {
       return <ComicReaderNavButton 
+                isSelected={this.state.currentComicPage === i}
                 onClick={this.updateCurrentComicPage.bind(this)}
                 key={i}
                 value={i}
