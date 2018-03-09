@@ -14,10 +14,6 @@ class StoryboardPage extends Component {
     };
   }
   
-  componentWillUnmount() {
-    this.deactivateSlick();
-  }
-  
   setMediaItemLinks(response) {
     let fetchedMediaItemLinks = response.data.map(function(mediaItem) {
       return mediaItem.source_url;
@@ -60,11 +56,6 @@ class StoryboardPage extends Component {
       infinite: true,
       centerMode: true
     });
-  }
-  
-  deactivateSlick() {
-    $('.slider-for').slick('unslick');
-    $('.slider-nav').slick('unslick');
   }
 }
 
