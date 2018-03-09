@@ -24,7 +24,7 @@ class LifeDrawingsPage extends Component {
   
   render() {
     return (
-      <div className="life-drawingsq-page">
+      <div className="life-drawings-page">
         <FetchSpinner requestUrl={LIFE_DRAWINGS_URL} onFetchSuccess={this.setLifeDrawingItemLinks.bind(this)} >
           <SliderDisplay itemLinks={this.state.lifeDrawingLinks}/>
           <div className="slider-nav-container">

@@ -4,7 +4,8 @@ import FetchSpinner from '../FetchSpinner';
 import Slick from 'slick-carousel';
 import SliderItems from '../SliderItems';
 import SliderDisplay from '../SliderDisplay';
-import { MEDIA_URL } from '../../config';
+import { getImageLinksForPosts } from '../parsers/WordPressParser';
+import { STORYBOARDS_URL } from '../../config';
 
 class StoryboardPage extends Component {
   constructor() {
@@ -15,17 +16,18 @@ class StoryboardPage extends Component {
   }
   
   setMediaItemLinks(response) {
-    let fetchedMediaItemLinks = response.data.map(function(mediaItem) {
-      return mediaItem.source_url;
-    })
+    var allPostImageLinks = getImageLinksForPosts(response);
+    var flattenedMediaItemLinks = [].concat.apply([], allPostImageLinks);
     
-    this.setState({mediaItemLinks: fetchedMediaItemLinks}, this.activateSlick);
+    console.log("flattenedMediaItemLinks: ", flattenedMediaItemLinks)
+    
+    this.setState({mediaItemLinks: flattenedMediaItemLinks}, this.activateSlick);
   }
   
   render() {
     return (
       <div className="storyboard-page">
-        <FetchSpinner requestUrl={MEDIA_URL} onFetchSuccess={this.setMediaItemLinks.bind(this)} >
+        <FetchSpinner requestUrl={STORYBOARDS_URL} onFetchSuccess={this.setMediaItemLinks.bind(this)} >
           <SliderDisplay itemLinks={this.state.mediaItemLinks}/>
           <div className="slider-nav-container">
             <SliderItems 
