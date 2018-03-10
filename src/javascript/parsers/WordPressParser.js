@@ -19,6 +19,32 @@ export function getImageLinksForPosts(wpResponse) {
   return imageLinksForPosts;
 }
 
+export function getComicInfoForPosts(wpResponse) {
+  var comicInfoForPosts = wpResponse.data.map((wpPostData, i) => {
+    var comicPageLinks = [];
+    const $ = cheerio.load(wpPostData.content.rendered);
+    
+    var imageTags = $('.gallery-item img');
+    
+    if (imageTags.length > 0) {
+      imageTags.map((i, image) => {
+        comicPageLinks.push($(image).attr('src'));
+      });
+    }
+    
+    var textContent = $('p').text().trim();
+    var keyValuePairs = parseKeyValuePairs(textContent);
+    
+    return {
+      links: comicPageLinks,
+      title: wpPostData.title.rendered,
+      description: keyValuePairs.Description
+    }; 
+  });
+  
+  return comicInfoForPosts;
+}
+
 export function getAnimationInfoForPosts(wpResponse) {
   var animationInfoForPosts = wpResponse.data.map((wpPostData, i) => {
     var postInfoObjects = [];

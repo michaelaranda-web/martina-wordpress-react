@@ -14,13 +14,13 @@ class ComicReader extends Component {
   }
   
   renderComicPages() {
-    return this.props.comicPageLinks.map((comicPageLink, i) => {
-      return <img src={comicPageLink} key={i} className={this._getComicPageClass(i)}/>
+    return this.props.comicItem.links.map((link, i) => {
+      return <img src={link} key={i} className={this._getComicPageClass(i)}/>
     });
   }
   
   renderNavButtons() {
-    return this.props.comicPageLinks.map((page, i) => {
+    return this.props.comicItem.links.map((page, i) => {
       return <ComicReaderNavButton 
                 isSelected={this.state.currentComicPage === i}
                 onClick={this.updateCurrentComicPage.bind(this)}
@@ -31,13 +31,15 @@ class ComicReader extends Component {
   }
   
   render() {
-    if (this.props.comicPageLinks.length === 0) {
+    var comicItem = this.props.comicItem;
+    
+    if (comicItem.links.length === 0) {
       return <div></div>
     }
     
     return (
       <div className="comic-reader">
-        <h2>Comic Title<span>This is a description for a comic.</span></h2>
+        <h2>{comicItem.title}<span>{comicItem.description}</span></h2>
         <div className="container-relative">
           <div className="current-comic-page">
            {this.renderComicPages()}

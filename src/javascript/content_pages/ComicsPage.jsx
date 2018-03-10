@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getImageLinksForPosts } from '../parsers/WordPressParser';
+import { getComicInfoForPosts } from '../parsers/WordPressParser';
 import FetchSpinner from '../FetchSpinner';
 import ComicReader from '../ComicReader';
 import { COMICS_URL } from '../../config';
@@ -8,24 +8,24 @@ class ComicsPage extends Component {
   constructor() {
     super();
     this.state = {
-      comicItemLinks: []
+      comicItems: []
     };
   }
   
-  setComicItemLinks(response) {
-    var allPostImageLinks = getImageLinksForPosts(response);
-    this.setState({comicItemLinks: allPostImageLinks});
+  setComicItems(response) {
+    var comicItems = getComicInfoForPosts(response);
+    this.setState({comicItems: comicItems});
   }
   
   renderComicReaders() {
-    return this.state.comicItemLinks.map((links, i) => {
-      return <ComicReader key={i} comicPageLinks={links} />
+    return this.state.comicItems.map((comicItem, i) => {
+      return <ComicReader key={i} comicItem={comicItem} />
     }) 
   }
   
   render() {
     return (
-      <FetchSpinner requestUrl={COMICS_URL} onFetchSuccess={this.setComicItemLinks.bind(this)}>
+      <FetchSpinner requestUrl={COMICS_URL} onFetchSuccess={this.setComicItems.bind(this)}>
         <div className="comics-page">
           {this.renderComicReaders()}
         </div>
