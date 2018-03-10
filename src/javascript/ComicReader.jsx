@@ -37,11 +37,14 @@ class ComicReader extends Component {
     
     return (
       <div className="comic-reader">
-        <div className="current-comic-page">
-         {this.renderComicPages()}
-        </div>
-        <div className="comic-reader-nav">
-          {this.renderNavButtons()}
+        <h2>Comic Title<span>This is a description for a comic.</span></h2>
+        <div className="container-relative">
+          <div className="current-comic-page">
+           {this.renderComicPages()}
+          </div>
+          <div className="comic-reader-nav">
+            {this.renderNavButtons()}
+          </div>
         </div>
       </div>
     );

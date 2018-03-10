@@ -121,6 +121,17 @@ body {
     text-align: center;
     padding: 20px 0 40px;
     
+    h2 {
+      text-align: left;
+      
+      span {
+        font-size: 14px;
+        font-weight: normal;
+        color: grey;
+        padding-left: 10px;
+      }
+    }
+    
     .comic-reader-nav {
       display: flex;
       flex-direction: column;
@@ -259,4 +270,8 @@ body {
       right: -50px;
     }
   }
+}
+
+.container-relative {
+  position: relative;
 }
