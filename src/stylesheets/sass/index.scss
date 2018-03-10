@@ -77,28 +77,24 @@ body {
   } 
 }
 
-.slider-display-section {
-  padding: 30px;
-  
-  .slider-for {
-    .slick-slide {
-      .item {
-        display: flex !important;
-        justify-content: center !important;
-      }
-      
-      img {
-        height: 350px;
-      }
-    }
+.storyboard-page, .life-drawings-page {
+  .slider-display-section {
+    padding: 30px;
     
-    .slick-arrow {
-      background-color: lightgrey;
+    .slider-for {
+      .slick-slide {
+        .item {
+          display: flex !important;
+          justify-content: center !important;
+        }
+        
+        img {
+          height: 350px;
+        }
+      }
     }
   }
-}
 
-.storyboard-page, .life-drawings-page {
   .slider-nav-container {
     display: flex;
     justify-content: center;
@@ -107,10 +103,6 @@ body {
   .slider-nav {
     max-width: 700px;
     margin-top: 30px;
-    
-    .slick-arrow {
-      background-color: lightgrey;
-    }
     
     .slick-track {
       height: 100px;
@@ -231,5 +223,41 @@ body {
   
   .gallery-divider {
     margin-bottom: 40px;
+  }
+}
+
+.slick-arrow {
+  font-family: Raleway;
+  font-weight: bold;
+  color: #d0caca;
+  top: 40%;
+  position: absolute;
+  z-index: 999;
+  cursor: pointer;
+  
+  &.big-arrow {
+    font-size: 48px;
+    
+    &.prev-arrow {
+      left: -25px;
+    }
+  
+    &.next-arrow {
+      right: -25px;
+    }
+  }
+  
+  &.small-arrow {
+    font-size: 26px;
+    top: 35%;
+    color: black;
+    
+    &.prev-arrow {
+      left: -50px;
+    }
+  
+    &.next-arrow {
+      right: -50px;
+    }
   }
 }

@@ -38,24 +38,31 @@ class LifeDrawingsPage extends Component {
   }
   
   activateSlick() {
-    $('.slider-for').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      fade: true,
-      asNavFor: '.slider-nav'
-    });
-    
-    $('.slider-nav').slick({
-      slidesToScroll: 1,
-      asNavFor: '.slider-for',
-      dots: true,
-      arrows: true,
-      focusOnSelect: true,
-      variableWidth: true,
-      infinite: true,
-      centerMode: true
-    });
+    //If slick is called before slider is rendered, initialization of center mode gets thrown off
+    setTimeout(() => {
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.slider-nav',
+        nextArrow: '<div class="next-arrow big-arrow">></div>',
+        prevArrow: '<div class="prev-arrow big-arrow"><</div>'
+      });
+      
+      $('.slider-nav').slick({
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: true,
+        arrows: true,
+        focusOnSelect: true,
+        variableWidth: true,
+        infinite: true,
+        centerMode: true,
+        nextArrow: '<div class="next-arrow small-arrow">></div>',
+        prevArrow: '<div class="prev-arrow small-arrow"><</div>'
+      });
+    }, 50)
   }
 }
 
