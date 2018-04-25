@@ -53,7 +53,7 @@ class StoryboardPage extends Component {
       $('.slider-nav').slick({
         slidesToScroll: 1,
         asNavFor: '.slider-for',
-        dots: true,
+        dots: false,
         arrows: true,
         focusOnSelect: true,
         variableWidth: true,
