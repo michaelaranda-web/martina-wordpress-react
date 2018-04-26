@@ -6,7 +6,7 @@ class SliderDisplay extends Component {
     return (
       <div className="slider-display-section">
         <SliderItems 
-          className="slider-for" 
+          className={this.props.className}
           itemLinks={this.props.itemLinks} />
       </div>
     );
