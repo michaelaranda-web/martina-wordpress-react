@@ -14,7 +14,7 @@ class MainContent extends Component {
         <Route exact path="/" component={HomePage}/>
         <Route path="/storyboard" component={StoryboardPage}/>
         <Route path="/sketches" component={LifeDrawingsPage}/>
-        <Route path="/landscapes" component={LandscapeAndPaintingsPage}/>
+        <Route path="/paintings" component={LandscapeAndPaintingsPage}/>
         <Route path="/graphics_and_animation" component={GraphicsAndAnimationPage}/>
         <Route path="/comics" component={ComicsPage}/>
       </div>

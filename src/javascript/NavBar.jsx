@@ -18,7 +18,7 @@ class NavBar extends Component {
             <Link to="/sketches">Sketches</Link>
           </div>
           <div className="nav-bar-link">
-            <Link to="/landscapes">Landscapes</Link>
+            <Link to="/paintings">Paintings</Link>
           </div>
           <div className="nav-bar-link">
             <Link to="/graphics_and_animation">Graphics & Animation</Link>
