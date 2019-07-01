@@ -5,3 +5,4 @@ export const ANIMATIONS_URL = WP_HEADLESS_URL + '/wp-json/wp/v2/posts?categories
 export const LIFE_DRAWINGS_URL = WP_HEADLESS_URL + '/wp-json/wp/v2/posts?categories=5';
 export const STORYBOARDS_URL = WP_HEADLESS_URL + '/wp-json/wp/v2/posts?categories=6';
 export const HOME_PAGE_CONTENT_URL = WP_HEADLESS_URL + '/wp-json/wp/v2/posts?categories=7';
+export const LANDSCAPE_AND_PAINTINGS_URL = WP_HEADLESS_URL + '/wp-json/wp/v2/posts?categories=8';
