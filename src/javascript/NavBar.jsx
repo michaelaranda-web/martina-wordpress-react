@@ -29,7 +29,11 @@ class NavBar extends Component {
           
           <div className="contact-info">
             <p>
-              <div className="instagram-icon icon" /><span className="instagram-handle">@martinaloart</span>
+              <div className="instagram-icon icon" />
+              <a 
+                href="https://www.instagram.com/martinaloart/" 
+                target="_blank"
+                className="instagram-handle">@martinaloart</a>
             </p>
             <p className="email-address">
               <div className="email-icon icon" /><span>martinaloartwork@gmail.com</span>
