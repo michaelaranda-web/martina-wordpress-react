@@ -28,8 +28,12 @@ class NavBar extends Component {
           </div>
           
           <div className="contact-info">
-            <p className="instagram-handle">IG: martinaloart</p>
-            <p className="email-address">martinaloartwork@gmail.com</p>
+            <p>
+              <div className="instagram-icon icon" /><span className="instagram-handle">@martinaloart</span>
+            </p>
+            <p className="email-address">
+              <div className="email-icon icon" /><span>martinaloartwork@gmail.com</span>
+            </p>
           </div>
         </div>
       </div>

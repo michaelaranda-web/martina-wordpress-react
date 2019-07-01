@@ -42,7 +42,23 @@ body {
     font-size: 12px;
     
     p {
+      display: flex;
       margin: 5px 0;
+      
+      .icon {
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+        margin-right: 7px;
+        
+        &.instagram-icon {
+          background-image: url(../../images/instagram_icon.svg);
+        }
+        
+        &.email-icon {
+          background-image: url(../../images/email_icon.svg);
+        }  
+      }
     }
   }
 }
