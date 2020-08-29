@@ -30,6 +30,10 @@ body {
   
   .container {
     margin-left: 20px;
+    
+    .nav-bar-title img {
+      width: 250px;
+    }
   }
   
   .nav-bar-link {
@@ -69,7 +73,7 @@ body {
 
 .main-content {
   height: 100vh;
-  margin-left: 245px;
+  margin-left: 290px;
   position: relative;
   max-width: 1000px;
 }

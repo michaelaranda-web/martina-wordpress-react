@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import logo from '../images/site-logo.jpg';
 
 class NavBar extends Component {
   render() {
     return (
       <div className="main-nav-bar">
         <div className="container">
-          <h1 className="nav-bar-title">Martina Lo</h1>
+          <div className="nav-bar-title"><img src={logo} alt="Logo" /></div>
           
           <div className="nav-bar-link">
             <Link to="/">Home</Link>
